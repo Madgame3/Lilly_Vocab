@@ -91,6 +91,11 @@ export default {
       return this.words.filter(word => word.correct == true);
     },
   },
+  watch: {
+    words(){
+      console.log("Words changed");
+    }
+  },
   beforeMount(){
     // Text to Speech
       this.msg = new SpeechSynthesisUtterance();

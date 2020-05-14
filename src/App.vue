@@ -5,8 +5,10 @@
     <button @click="speech =true; spelling = false;">Speech</button>
     <div v-if="spelling || speech">
       <hr>
-      <button @click="words = week29">Week 29</button>
-      <button @click="words = week30">Week 30</button>
+      <button type="button" @click="words = week28">Week 28</button>
+      <button type="button" @click="words = week29">Week 29</button>
+      <button type="button" @click="words = week30">Week 30</button>
+      <button type="button" @click="words = week31">Week 31</button>
     </div>
     <hr>
     <Speech v-if="speech && words != null " :words="words"></Speech>
@@ -28,7 +30,7 @@ export default {
     spelling: false, 
     speech: false,
     words: null,
-    week29: [
+    week28: [
         {word: "the", correct: false, attempts: 0},
         {word: "like", correct: false, attempts: 0},
         {word: "after", correct: false, attempts: 0},
@@ -38,7 +40,10 @@ export default {
         {word: "and", correct: false, attempts: 0},
         {word: "green", correct: false, attempts: 0},
         {word: "where", correct: false, attempts: 0},
-        {word: "yellow", correct: false, attempts: 0},
+        {word: "yellow", correct: false, attempts: 0}
+    ],
+    week29: [
+        {word: "fly", correct: false, attempts: 0},
         {word: "bat", correct: false, attempts: 0},
         {word: "ring", correct: false, attempts: 0},
         {word: "wave", correct: false, attempts: 0},
@@ -60,7 +65,20 @@ export default {
         {word: "tall", correct: false, attempts: 0},
         {word: "oval", correct: false, attempts: 0},
         {word: "America", correct: false, attempts: 0},
-      ]
+      ],
+      week31: [
+        {word: "gas", correct: false, attempts: 0},
+        {word: "sad", correct: false, attempts: 0},
+        {word: "summer", correct: false, attempts: 0},
+        {word: "fall", correct: false, attempts: 0},
+        {word: "winter", correct: false, attempts: 0},
+        {word: "happy", correct: false, attempts: 0},
+        {word: "long", correct: false, attempts: 0},
+        {word: "short", correct: false, attempts: 0},
+        {word: "small", correct: false, attempts: 0},
+        {word: "africa", correct: false, attempts: 0},
+      ], 
+
   }),
 }
 </script>

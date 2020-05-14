@@ -1,18 +1,23 @@
 <template>
   <div style="display: flex; flex-direction: column; justify-content: center;">
     <h1>{{remainingWords.length}} Words Remaining</h1>
+    <!-- cat images -->
+    <img v-if="catImage !=null" :src="catImage.url" :width="catImage.width" :height="catImage.height">
     <button @click="playWord">Play Word</button>
-    <input type="text" v-model="answer" />
+    <input type="text" ref="input" v-model="answer" />
     <button @click="checkAnswer">Check My Answer</button>
   </div>
 </template>
 
 <script>
+import axios from "axios";
+
 export default {
   name: 'Spelling',
   props: ['words'],
     data: () => ({
       index: null,
+      catImage: null,
       answer: "",
       question: null,
       feedback: {
@@ -35,13 +40,27 @@ export default {
       }
       this.msg.text = this.question;
       speechSynthesis.speak(this.msg);
+      this.$refs.input.focus();
+    },
+    async getCatImage(){
+      try {
+        const response = await axios.get('https://api.thecatapi.com/v1/images/search?mime_types=gif')
+        this.catImage = response.data[0]
+      } catch (error) {
+        console.log(error);
+      }
     },
     checkAnswer(){
       if(this.answer.toLowerCase() == this.question.toLowerCase()){
+        this.getCatImage();
         this.giveFeedback("Fantastic!", true);
         this.remainingWords[this.index].correct = true;
         this.answer = ""
-        this.randomWord();
+        this.question = null;
+        this.index = null;
+        if(this.remainingWords.length > 0){
+          this.randomWord();
+        }
       }else{
         this.giveFeedback("Good try, but no!", false);
         this.answer = "";
@@ -80,6 +99,18 @@ export default {
       this.msg.text = "";
       this.msg.lang = 'en-GB';
   },
+  watch: {
+    catImage(){
+      var vm  = this;
+      setTimeout(function(){
+        vm.catImage = null
+      }, 8000);
+    },
+    words(){
+      console.log("Words changed");
+      this.randomWord();
+    }
+  }
 }
 </script>
 
@@ -103,5 +134,8 @@ input {
   margin-right: 10%;
   margin-left: 10%;
   text-align: center;
+}
+img {
+  margin: auto;
 }
 </style>
