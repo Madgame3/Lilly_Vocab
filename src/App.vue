@@ -77,8 +77,19 @@ export default {
         {word: "short", correct: false, attempts: 0},
         {word: "small", correct: false, attempts: 0},
         {word: "africa", correct: false, attempts: 0},
-      ], 
-
+      ],
+      week32: [
+        {word: "old", correct: false, attempts: 0},
+        {word: "stomach", correct: false, attempts: 0},
+        {word: "history", correct: false, attempts: 0},
+        {word: "grow", correct: false, attempts: 0},
+        {word: "computer", correct: false, attempts: 0},
+        {word: "family", correct: false, attempts: 0},
+        {word: "digest", correct: false, attempts: 0},
+        {word: "large", correct: false, attempts: 0},
+        {word: "care", correct: false, attempts: 0},
+        {word: "food", correct: false, attempts: 0}
+      ] 
   }),
 }
 </script>
