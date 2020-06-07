@@ -9,6 +9,7 @@
       <button type="button" @click="words = week29">Week 29</button>
       <button type="button" @click="words = week30">Week 30</button>
       <button type="button" @click="words = week31">Week 31</button>
+      <button type="button" @click="words = week32">Week 32</button>
     </div>
     <hr>
     <Speech v-if="speech && words != null " :words="words"></Speech>
